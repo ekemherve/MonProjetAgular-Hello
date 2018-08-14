@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsListComponent implements OnInit {
 
-  constructor() { }
+   data: any[];
+
+  constructor() {}
 
   ngOnInit() {
+    this.data = [
+      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 },
+      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 },
+      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 }
+    ];
   }
-
 }
