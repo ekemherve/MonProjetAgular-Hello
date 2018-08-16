@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduit } from '../domain/iproduit';
+import { ProduitsService } from '../services/produits.service';
 
 @Component({
   selector: 'app-products-list',
@@ -7,15 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsListComponent implements OnInit {
 
-   data: any[];
+   // data: any[];
+   data: IProduit[];
 
-  constructor() {}
+  constructor(private _service: ProduitsService) {}
 
   ngOnInit() {
-    this.data = [
-      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 },
-      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 },
-      { code: 'P1000', titre: 'Café', prixUnitaire: 5.5 }
-    ];
+    // this.data = this._service.getProduits();
+    this._service.getProduits().subscribe(
+      res => this.data = res,
+      erreur => console.log('Attention il y a l\'erreur : ' + erreur));
+
   }
 }

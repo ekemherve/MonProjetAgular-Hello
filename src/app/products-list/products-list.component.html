@@ -3,7 +3,7 @@
     <h5>Liste de produits</h5>
   </div>
   <div class="card-body">
-      <table class="table table-bordered table-striped">
+      <table *ngIf='data && data.length' class="table table-bordered table-striped">
           <thead>
             <tr>
               <th >Code</th>
@@ -15,7 +15,7 @@
             <tr *ngFor="let p of data">
               <th>{{p.code}}</th>
               <td>{{p.titre}}</td>
-              <td>{{p.prixUnitaire}}</td>
+              <td>{{p.prixUnitaire | currency:"EUR":"symbol"}}</td>
             </tr>
           </tbody>
         </table>
