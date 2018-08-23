@@ -14,10 +14,13 @@
           <tbody>
             <tr *ngFor="let p of data">
               <th>{{p.code}}</th>
-              <td>{{p.titre}}</td>
+              <td><a [routerLink]="['/detail', p.code]">{{p.titre}}</a></td>
               <td>{{p.prixUnitaire | currency:"EUR":"symbol"}}</td>
             </tr>
           </tbody>
         </table>
+
+        <!-- <a [routerLink]="['/detail', 'X200']">First</a>
+        <a [routerLink]="['/detail', 'Y200']">Second</a> -->
   </div>
 </div>

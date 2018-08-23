@@ -1,0 +1,39 @@
+<form #f="ngForm" (ngSubmit)="addProduit()">
+  <div class="form-group">
+    <label for="code" class="col-3">Code:</label>
+    <div class="col-6">
+        <input type="text" class="form-control mr-sm-4" id="code" placeholder="Exemple : H200"
+                ngModel #code="ngModel" [(ngModel)] = "produit.code" name = "code" required>
+
+    </div>
+    <div class="alert alert-danger" *ngIf="code.touched && code.invalid">Le code est obligatoire</div>
+  </div>
+  <div class="form-group">
+    <label for="titre" class="col-3">Titre:</label>
+    <div class="col-6">
+        <input type="text" class="form-control" id="titre" placeholder="Exemple : Comics Book"
+                ngModel #titre="ngModel" [(ngModel)] = "produit.titre" name = "titre" required minlength="3">
+    </div>
+    <div class="alert alert-danger" *ngIf="titre.touched && titre.invalid">
+      <div *ngIf="titre.errors.required">Le titre est obligatoire</div>
+      <div *ngIf="titre.errors.minlength">Le titre doit avoir au moins 3 characteres</div>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="prix" class="col-3">PrixUnitaire:</label>
+      <div class="col-6">
+          <input type="number" class="form-control" id="prix" placeholder="Exemple : 150.00"
+                 ngModel #prix="ngModel" [(ngModel)] = "produit.prixUnitaire" name = "prix" required>
+      </div>
+      <div class="alert alert-danger" *ngIf="prix.touched && prix.invalid">Le code est obligatoire</div>
+  </div>
+  <div class="form-group form-check">
+    <label class="form-check-label col-3">
+      <input class="form-check-input" type="checkbox"> Remember me
+    </label>
+  </div>
+  <div class="col-3">
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">submit</button>
+  </div>
+
+</form>
